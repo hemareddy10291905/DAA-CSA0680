@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+    // Big O Notation Example
+    int n = 10;
+    for (int i = 0; i < n; i++) {
+        printf("Hello, World!\n");
+    }
+
+    // Omega Notation Example
+    int m = 5;
+    for (int j = 0; j < m; j++) {
+        printf("Welcome to C Programming!\n");
+    }
+
+    // Theta Notation Example
+    int k = 8;
+    for (int l = 0; l < k; l++) {
+        printf("This is a Theta Notation example.\n");
+    }
+
+    return 0;
+}
