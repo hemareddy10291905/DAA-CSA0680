@@ -1,0 +1,19 @@
+def strStr(haystack, needle):
+    # Edge case: if needle is an empty string, return 0
+    if needle == "":
+        return 0
+    
+    haystack_len = len(haystack)
+    needle_len = len(needle)
+    
+    # Sliding window approach
+    for i in range(haystack_len - needle_len + 1):
+        if haystack[i:i + needle_len] == needle:
+            return i
+    
+    return -1
+
+# Example usage
+haystack = "hello"
+needle = "ll"
+print("The index of the first occurrence is:", strStr(haystack, needle))  # Output should be 2
