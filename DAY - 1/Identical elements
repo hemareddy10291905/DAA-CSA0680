@@ -1,0 +1,11 @@
+# Function to create a list with all identical elements
+def create_identical_elements_list(element, length):
+    return [element] * length
+
+# Example usage
+element = 42
+length = 10
+identical_list = create_identical_elements_list(element, length)
+
+# Printing the list
+print("List with all identical elements:", identical_list)
