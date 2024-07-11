@@ -1,0 +1,42 @@
+# Create an empty list
+my_list = []
+
+# Print the empty list
+print("Initial list:", my_list)
+
+# Add elements to the list
+my_list.append(10)
+my_list.append(20)
+my_list.append(30)
+
+# Print the list after adding elements
+print("List after adding elements:", my_list)
+
+# Access elements in the list
+first_element = my_list[0]
+second_element = my_list[1]
+third_element = my_list[2]
+
+print("First element:", first_element)
+print("Second element:", second_element)
+print("Third element:", third_element)
+
+# Remove an element from the list
+my_list.remove(20)
+
+# Print the list after removing an element
+print("List after removing an element:", my_list)
+
+# Check if an element is in the list
+is_in_list = 10 in my_list
+print("Is 10 in the list?", is_in_list)
+
+# Get the length of the list
+list_length = len(my_list)
+print("Length of the list:", list_length)
+
+# Clear the list
+my_list.clear()
+
+# Print the list after clearing
+print("List after clearing:", my_list)
