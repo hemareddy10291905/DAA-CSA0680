@@ -1,0 +1,20 @@
+# Function to create a sorted array
+def create_sorted_array(size):
+    return list(range(1, size + 1))
+
+# Function to sort an array
+def sort_array(arr):
+    return sorted(arr)
+
+# Example usage
+size = 10  # Size of the array
+
+# Create a sorted array
+sorted_array = create_sorted_array(size)
+
+# Sort the array (just to demonstrate sorting)
+sorted_again_array = sort_array(sorted_array)
+
+# Print the original and sorted arrays
+print("Sorted Array:", sorted_array)
+print("Sorted Again Array (already sorted):", sorted_again_array)
