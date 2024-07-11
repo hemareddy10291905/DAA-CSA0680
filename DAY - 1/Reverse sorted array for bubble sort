@@ -1,0 +1,40 @@
+def bubble_sort(arr):
+    n = len(arr)
+    # Traverse through all array elements
+    for i in range(n):
+        swapped = False
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+            # Traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+        
+        # If no two elements were swapped in the inner loop,
+        # then the array is already sorted
+        if not swapped:
+            break
+
+# Function to print an array
+def print_array(arr):
+    print("Sorted Array:", arr)
+
+# Function to create a reverse sorted array
+def create_reverse_sorted_array(size):
+    return list(range(size, 0, -1))
+
+# Example usage
+size = 10  # Size of the array
+
+# Create a reverse sorted array
+reverse_sorted_array = create_reverse_sorted_array(size)
+
+print("Original Reverse Sorted Array:", reverse_sorted_array)
+
+# Sort the array using bubble sort
+bubble_sort(reverse_sorted_array)
+
+# Print the sorted array
+print_array(reverse_sorted_array)
