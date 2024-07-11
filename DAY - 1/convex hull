@@ -1,0 +1,55 @@
+def orientation(p, q, r):
+    """
+    To find the orientation of the ordered triplet (p, q, r).
+    0 -> p, q and r are collinear
+    1 -> Clockwise
+    2 -> Counterclockwise
+    """
+    val = (q[1] - p[1]) * (r[0] - q[0]) - (q[0] - p[0]) * (r[1] - q[1])
+    if val == 0:
+        return 0
+    elif val > 0:
+        return 1
+    else:
+        return 2
+
+def convex_hull(points):
+    """
+    Finds the convex hull of a set of 2D points using the brute force approach.
+    """
+    n = len(points)
+    if n < 3:
+        return []  # Convex hull is not defined for fewer than 3 points
+
+    hull = []
+
+    for i in range(n):
+        for j in range(i+1, n):
+            x1, y1 = points[i]
+            x2, y2 = points[j]
+            left_side = False
+            right_side = False
+            for k in range(n):
+                if k != i and k != j:
+                    x, y = points[k]
+                    # Calculate orientation of the triplet (i, j, k)
+                    orientation_value = orientation(points[i], points[j], points[k])
+                    if orientation_value == 2:
+                        left_side = True
+                    elif orientation_value == 1:
+                        right_side = True
+            # If all points are either on one side or collinear
+            if not (left_side and right_side):
+                if points[i] not in hull:
+                    hull.append(points[i])
+                if points[j] not in hull:
+                    hull.append(points[j])
+
+    return hull
+
+# Example usage
+points = [(0, 3), (2, 2), (1, 1), (2, 1), (3, 0), (0, 0), (3, 3)]
+hull = convex_hull(points)
+print("The points in the convex hull are:")
+for point in hull:
+    print(point)
