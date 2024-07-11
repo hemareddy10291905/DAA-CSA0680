@@ -1,0 +1,38 @@
+from itertools import combinations
+
+def knapsack(weights, values, max_weight):
+    """
+    Solve the 0-1 Knapsack Problem using exhaustive search.
+    
+    Parameters:
+    weights (list): A list of item weights.
+    values (list): A list of item values.
+    max_weight (int): The maximum weight capacity of the knapsack.
+    
+    Returns:
+    tuple: The maximum value and the list of selected item indices.
+    """
+    num_items = len(weights)
+    best_value = 0
+    best_combination = []
+    
+    # Generate all possible combinations of item indices
+    for r in range(num_items + 1):
+        for combination in combinations(range(num_items), r):
+            current_weight = sum(weights[i] for i in combination)
+            if current_weight <= max_weight:
+                current_value = total_value(combination, values)
+                if current_value > best_value:
+                    best_value = current_value
+                    best_combination = combination
+    
+    return best_value, best_combination
+
+# Example usage
+weights = [2, 3, 4, 5]
+values = [3, 4, 5, 6]
+max_weight = 5
+
+max_value, selected_items = knapsack(weights, values, max_weight)
+print(f"The maximum value is: {max_value}")
+print(f"The selected item indices are: {selected_items}")
