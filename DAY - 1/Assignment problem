@@ -1,0 +1,50 @@
+from itertools import permutations
+
+def total_cost(assignment, cost_matrix):
+    """
+    Calculate the total cost of a given assignment.
+    
+    Parameters:
+    assignment (list): A list representing the worker-task pairings.
+    cost_matrix (list of list): The cost matrix.
+    
+    Returns:
+    int: The total cost of the assignment.
+    """
+    return sum(cost_matrix[i][assignment[i]] for i in range(len(assignment)))
+
+def assignment_problem(cost_matrix):
+    """
+    Solve the assignment problem using exhaustive search.
+    
+    Parameters:
+    cost_matrix (list of list): The cost matrix.
+    
+    Returns:
+    tuple: The minimum cost and the corresponding assignment.
+    """
+    num_workers = len(cost_matrix)
+    all_permutations = permutations(range(num_workers))
+    
+    min_cost = float('inf')
+    best_assignment = None
+    
+    for perm in all_permutations:
+        current_cost = total_cost(perm, cost_matrix)
+        if current_cost < min_cost:
+            min_cost = current_cost
+            best_assignment = perm
+            
+    return min_cost, best_assignment
+
+# Example usage
+cost_matrix = [
+    [9, 2, 7, 8],
+    [6, 4, 3, 7],
+    [5, 8, 1, 8],
+    [7, 6, 9, 4]
+]
+
+min_cost, best_assignment = assignment_problem(cost_matrix)
+print(f"The minimum cost is: {min_cost}")
+print(f"The best assignment is: {best_assignment}")
