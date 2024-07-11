@@ -1,0 +1,5 @@
+# Creating a list with one element
+my_list = [42]
+
+# Printing the list
+print("List with one element:", my_list)
