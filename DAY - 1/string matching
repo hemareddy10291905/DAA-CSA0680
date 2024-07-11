@@ -1,0 +1,12 @@
+def string_matching(words):
+    result = []
+    for i in range(len(words)):
+        for j in range(len(words)):
+            if i != j and words[i] in words[j]:
+                result.append(words[i])
+                break
+    return result
+
+# Example usage
+words = ["mass", "as", "hero", "superhero"]
+print("Substrings in words that are also part of another word:", string_matching(words))  # Output should be ["as", "hero"]
