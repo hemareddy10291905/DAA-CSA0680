@@ -1,0 +1,22 @@
+def is_palindrome(s):
+    # Remove spaces and convert to lowercase for uniformity
+    s = ''.join(s.split()).lower()
+
+    def check_recursive(sub_s):
+        # Base case: if the string is empty or has one character, it's a palindrome
+        if len(sub_s) <= 1:
+            return True
+        # If the first and last characters do not match, it's not a palindrome
+        if sub_s[0] != sub_s[-1]:
+            return False
+        # Recur for the remaining substring (excluding the first and last characters)
+        return check_recursive(sub_s[1:-1])
+
+    return check_recursive(s)
+
+# Example usage
+input_str = "A man a plan a canal Panama"
+if is_palindrome(input_str):
+    print(f'"{input_str}" is a palindrome.')
+else:
+    print(f'"{input_str}" is not a palindrome.')
