@@ -1,0 +1,11 @@
+# Function to create a list with negative numbers
+def create_negative_numbers_list(start, end):
+    return list(range(start, end + 1))
+
+# Example usage
+start = -10
+end = -1
+negative_numbers_list = create_negative_numbers_list(start, end)
+
+# Printing the list
+print("List with negative numbers:", negative_numbers_list)
