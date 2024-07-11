@@ -1,0 +1,55 @@
+import itertools
+import math
+
+def distance(city1, city2):
+    """
+    Calculate the Euclidean distance between two cities.
+    
+    Parameters:
+    city1 (tuple): Coordinates of the first city.
+    city2 (tuple): Coordinates of the second city.
+    
+    Returns:
+    float: The Euclidean distance between the two cities.
+    """
+    return math.sqrt((city1[0] - city2[0]) ** 2 + (city1[1] - city2[1]) ** 2)
+
+def tsp(cities):
+    """
+    Solve the Traveling Salesman Problem using exhaustive search.
+    
+    Parameters:
+    cities (list of tuple): A list of city coordinates.
+    
+    Returns:
+    tuple: The minimum distance and the corresponding path.
+    """
+    num_cities = len(cities)
+    if num_cities <= 1:
+        return 0, cities
+
+    # Generate all possible permutations of cities excluding the starting city
+    all_permutations = itertools.permutations(range(1, num_cities))
+    
+    min_distance = float('inf')
+    best_path = None
+    
+    # Iterate through each permutation and calculate the total distance
+    for perm in all_permutations:
+        current_path = [0] + list(perm) + [0]  # Start and end at the starting city
+        current_distance = sum(distance(cities[current_path[i]], cities[current_path[i+1]]) for i in range(num_cities))
+        
+        if current_distance < min_distance:
+            min_distance = current_distance
+            best_path = current_path
+    
+    # Convert city indices to city coordinates for the result
+    best_path_coords = [cities[i] for i in best_path]
+    
+    return min_distance, best_path_coords
+
+# Example usage
+cities = [(0, 0), (1, 1), (2, 2), (1, 2)]
+min_distance, best_path = tsp(cities)
+print(f"The minimum distance is: {min_distance}")
+print(f"The best path is: {best_path}")
